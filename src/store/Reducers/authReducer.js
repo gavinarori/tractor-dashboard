@@ -6,7 +6,7 @@ export const admin_login = createAsyncThunk(
     'auth/admin_login',
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/admin-login', info, { withCredentials: true })
+            const { data } = await api.post('/admin-login', info, )
             localStorage.setItem('accessToken', data.token)
             return fulfillWithValue(data)
         } catch (error) {
@@ -19,7 +19,7 @@ export const seller_login = createAsyncThunk(
     'auth/seller_login',
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/seller-login', info, { withCredentials: true })
+            const { data } = await api.post('/seller-login', info, )
             localStorage.setItem('accessToken', data.token)
             return fulfillWithValue(data)
         } catch (error) {
@@ -31,7 +31,7 @@ export const logout = createAsyncThunk(
     'auth/logout',
     async ({ navigate, role }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get('/logout', { withCredentials: true })
+            const { data } = await api.get('/logout', )
             localStorage.removeItem('accessToken')
             if (role === 'admin') {
                 navigate('/admin/login')
@@ -52,7 +52,7 @@ export const seller_register = createAsyncThunk(
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
             console.log(info)
-            const { data } = await api.post('/seller-register', info, { withCredentials: true })
+            const { data } = await api.post('/seller-register', info, )
             localStorage.setItem('accessToken', data.token)
             return fulfillWithValue(data)
         } catch (error) {
@@ -66,7 +66,7 @@ export const profile_image_upload = createAsyncThunk(
     'auth/profile_image_upload',
     async (image, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/profile-image-upload', image, { withCredentials: true })
+            const { data } = await api.post('/profile-image-upload', image, )
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -78,7 +78,7 @@ export const profile_info_add = createAsyncThunk(
     'auth/profile_info_add',
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/profile-info-add', info, { withCredentials: true })
+            const { data } = await api.post('/profile-info-add', info,)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -93,7 +93,7 @@ export const get_user_info = createAsyncThunk(
     'auth/get_user_info',
     async (_, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get('/get-user', { withCredentials: true })
+            const { data } = await api.get('/get-user', )
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
